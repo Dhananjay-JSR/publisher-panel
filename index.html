@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Publisher Panel</title>
+  <link rel="stylesheet" href="./assets/css/materialize.css">
+  <link rel="stylesheet" href="./assets/css/index.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="./assets/js/function-scripts.js" defer></script>
+  <script src="./assets/js/nav-script.js" defer></script>
+  <script src="./assets/js/materialize.js" defer></script>
+</head>
+
+<body>
+  <!-- <template> -->
+
+  <!-- TEMPLATE: MY-PROFILE TEMPLATE -->
+  <template id="profile-template" data-page-title="Account Info">
+    <div id="profile-browser">
+      <div id="user-name-header" class="content-browser-header">
+        WELCOME Dummy Name
+      </div>
+      <div id="profile-section">
+        <div id="profile-section-header">
+          Profile
+        </div>
+        <div class="profile-section-content">
+          <div id="name">
+            Dummy Name
+          </div>
+          <div id="email">
+            dummy@mail.com
+          </div>
+          <div id="phone">
+            9854412457
+          </div>
+          <div id="address">
+            Dummy Addresss
+          </div>
+        </div>
+      </div>
+      <div class="bank-section">
+        <div id="bank-section-header">
+          Bank Details
+        </div>
+        <div class="bank-section-content">
+          <div id="bank-section-acc-name">
+            Account Name:
+            <div id="bank-acc-name-id" class="bank-items">
+              dummy Account Name
+            </div>
+          </div>
+          <div id="bank-section-acc-number">
+            Account Number
+            <div id="bank-number-id" class="bank-items">
+              dummy Bank Number
+            </div>
+          </div>
+          <div id="bank-section-bank-name">
+            Bank Name
+            <div id="bank-name-id" class="bank-items">
+              dummy Bank Name
+            </div>
+          </div>
+          <div id="bank-section-bank-address">
+            Bank Address
+            <div id="bank-address" class="bank-items">
+              dummy Bank Address
+            </div>
+          </div>
+          <div id="bank-section-IFSC-code">
+            IFSC Code
+            <div id="bank-ifsc-id" class="bank-items">
+              dummy IFSC CODE
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+  <!--End of Profile Section TEMPLATE:-->
+
+  <!--START OF FAQ TEMPLATE:-->
+  <template id="FAQ-template" data-page-title="FAQ">
+    <div id="FAQ-browser">
+      <div id="FAQ-name-header" class="content-browser-header">
+        FAQ
+      </div>
+      <div id="FAQ-section">
+        <input placeholder="Search FAQ" class="FAQ-section-search" type="text">
+      </div>
+    </div>
+  </template>
+  <!--END OF FAQ TEMPLATE:-->
+
+  <!--Contact Us TEMPLATE:-->
+  <template id="contact-us-template" data-page-title="Contact US">
+    <div id="Contact-Us-header" class="content-browser-header">
+      Contact US
+    </div>
+    <div id="contact-us-headline-1">
+      Contact US
+    </div>
+    <div class="contact-us-icons">
+      <div id="contact-us-icons-phone">
+        <i class="fa-solid fa-phone"></i>
+      </div>
+      <div id="contact-us-icons-whatsapp">
+        <i class="fa-brands fa-whatsapp"></i>
+      </div>
+    </div>
+    <div id="contact-us-headline-2">
+      Write An Email
+    </div>
+    <div class="contact-us-email-btn">
+      <button>
+        Mail US
+      </button>
+    </div>
+  </template>
+  <!--End of Contact Us TEMPLATE:-->
+
+  <!-- Start of My earning TEMPLATE:-->
+  <template id="my-earning-template" data-page-title="My earning">
+    <div id="my-earning-header" class="content-browser-header">
+      My Earning
+    </div>
+    <div class="my-earning-divider">
+      <div class="my-earning-toggle">
+        <div id="Orders_title_btn" class="my-earning-toggle-active">
+          Orders
+        </div>
+        <div id="Invoices_title_btn">
+          Invoices
+        </div>
+      </div>
+    </div>
+    <!--My Earning CONTENT: Browser-->
+    <div id="my-earning-content">
+      <div class="my-earning-order-content-title">
+        Earning Title
+      </div>
+      <div class="my-earning-reports">
+        <div class="my-earning-reports-heading-total-earning">
+          Total Earning This Year <div id="addCurrentYear"></div>
+          <div id="my-earning-reports-total-earning-text" class="my-earning-reports-text">
+            0
+          </div>
+        </div>
+        <div class="my-earning-reports-heading-total-earning">
+          Total Soft Copy Orders <div id="addCurrentYear"></div>
+          <div id="my-earning-reports-total-soft-text" class="my-earning-reports-text">
+            0
+          </div>
+        </div>
+        <div class="my-earning-reports-heading-total-earning">
+          Total Hard Cover Orders <div id="addCurrentYear"></div>
+          <div id="my-earning-reports-total-hard-text" class="my-earning-reports-text">
+            0
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="recent-orders" class="my-earning-reports">
+      <div id="recent-order-title">
+        Recent Orders
+      </div>
+    </div>
+  </template>
+  <!-- End of My earning Template-->
+
+   <!-- Start of Add Books TEMPLATE:-->
+   <template id="add-books-template" data-page-title="Add Books">
+    <div id="add-book-header" class="content-browser-header">
+      Add Books
+    </div>
+    <div id="add-book-form-content"> 
+      <div id="add-books-holder">
+        <div id="add-books-image-picker-holder">
+          <img id="book-image-picker-show" class="disabled-add-books-image-picker" src="" alt="Book Imager">
+          <input id="book-image-picker" type="file"  accept="image/png, image/jpeg">
+      </div>
+      <div id="add-book-name">
+        Book Name
+        <input id="add-book-name-input" type="text">
+      </div>
+      <div id="add-book-stocks">
+        Available Stocks
+        <input id="add-book-stocks-input" type="number" min="0">
+      </div>
+      <div id="add-book-mrp-sale-holder">
+      <div id="add-book-mrp">
+        MRP Rs
+        <input id="add-book-mrp-input" type="number" min="0">
+      </div>
+      <div id="add-book-sale">
+        Sale Rs
+        <input id="add-book-sale-input" type="number" min="0">
+      </div>
+    </div>
+      <div id="add-book-submit-btn">
+       
+        <a id="submit-btn-book" class="waves-effect waves-light btn">Submit Response</a>
+      </div>
+      </div>
+      
+</div>
+
+  </template>
+  <!-- END of Add Books-->
+
+
+  <!-- STart of My Books TEMPLATE:-->
+  <template id="my-book-template" data-page-title="My Book">
+    <div id="my-book-header" class="content-browser-header">
+      My Books
+    </div>
+    <div id="my-book-dynamic-content">
+      <!---     CONTENT: goes here-->
+    </div>
+  </template>
+
+  <!--My Book DynamiC CONTENT: FIeld-->
+  <template id="my-book-dynamic-template">
+    <div class="book-holder">
+      
+      <img id="my_book_image" src="https://picsum.photos/200/300" class="my-book-content-image">
+      <div class="my-book-content-body">
+        <div class="my-book-content-body-name">
+          Name - <div id="my_book_name" class="book-name boldered-book">Test Name</div>
+        </div>
+        <div class="my-book-content-body-available-stocks">
+          Available Stocks :-<div id="my_book_stocks" class="available-stocks boldered-book">
+            15
+          </div>
+        </div>
+        <div class="my-book-content-body-MRP">
+          MRP Rs :-<div id="my_book_mrp" class="MRP-Text boldered-book">
+            180
+          </div>
+        </div>
+        <div class="my-book-content-body-Sale-Price">
+          Sale Price Rs <div id="my_book_sale" class="Sale-Price-Text boldered-book">
+            100
+          </div>
+        </div>
+        <div class="my-book-content-body-action">
+          <div class="switch">
+            <label>
+             
+              <input type="checkbox">
+              <span class="lever"></span>
+            
+            </label>
+          </div>
+          <button><i class="fa-solid fa-trash"></i></button><button><i class="fa-solid fa-pen"></i></button>
+        </div>
+      </div>
+    </div>
+  </template>
+  <!--End Of My Book DynamiC Content FIeld-->
+
+  <!--My Book Dynamic CONTENT: Not Found-->
+  <template id="template-not-records-found">
+    <div class="content-browser-header">
+      No RECORD FOUND
+    </div>
+  </template>
+  <!--End My Book DYnamic COntent Not Found-->
+
+
+  <!-- End of My Books Temlate-->
+
+  <!-- Start of My Customer TEMPLATE:-->
+  <template id="my-customer-template" data-page-title="My Customer">
+    <div id="my-customer-header" class="content-browser-header">
+      My Customer
+    </div>
+    <div id="my-customer-dynamic-content">
+      <!---     CONTENT: goes here-->
+    </div>
+  </template>
+  <!-- End of My Customer Template-->
+
+  <!--My Customer DynamiC CONTENT: Field-->
+  <template id="my-customer-dynamic-template">
+    <div id="customer-holder-id" class="customer-holder">
+      Sample Customer
+    </div>
+  </template>
+  <!--End Of My Book Dynamic COntent FIeld-->
+
+  <!-- Start of Sale Report TEMPLATE:-->
+  <template id="sale-report-template" data-page-title="Sale Report">
+    <div id="sale-report-header" class="content-browser-header">
+      Sale Report
+    </div>
+    <div id="sale-report-dynamic-content">
+      <!---CONTENT:-->
+    </div>
+  </template>
+  <!-- End of Sale Report Template-->
+
+  <!--Sale DynamiC CONTENT: FIeld-->
+  <template id="sale-report-dynamic-template">
+    <div class="sale-content-holder">
+      <div class="id-date-sale">
+        <div id="sale-id">
+          Sale ID
+        </div>
+        <div id="date">
+          34/04/2334
+        </div>
+      </div>
+      <div class="sale-copy-type-mode">
+        <div id="copy-type">
+          Soft Copy
+        </div>
+        <div id="mode">
+          Online
+        </div>
+      </div>
+      <div class="total-pricing-sale-report">
+        <div id="sale-report-price-title">
+          Total: Rs
+        </div>
+        <div id="sale-report-price-tag">
+          110
+        </div>
+      </div>
+    </div>
+  </template>
+  <!--End Of Sale DynamiC COntent FIeld-->
+
+  <!-- Start of Order Report TEMPLATE:-->
+  <template id="order-report-template" data-page-title="Order Report">
+    <div id="order-report-header" class="content-browser-header">
+      Order Report
+    </div>
+    <div id="order-report-content-header">
+      <div>
+        User Name
+      </div>
+      <div>Order</div>
+      <div>Order Status</div>
+      <div>
+        Price
+      </div>
+      <div>
+        Date
+      </div>
+      <div>
+        Courier Name
+      </div>
+      <div>
+        Tracking ID
+      </div>
+    </div>
+    <div id="order-report-dynamic-content">
+      <!---CONTENT:-->
+    </div>
+  </template>
+  <!-- End of Order Report Template-->
+
+  <!--Order Report DynamiC CONTENT: FIeld-->
+  <template id="order-report-dynamic-template">
+    <div class="order-content-holder">
+      <div class="order-user-name">
+        Sample Name
+      </div>
+      <div class="order-dynamic-number">
+        AC2137234
+      </div>
+      <div class="order-dynamic-status">Completed</div>
+      <div class="order-dynamic-price">Rs 110</div>
+      <div class="order-dynamic-date">Jan 26 , 2022</div>
+      <div class="order-dynamic-courier">
+        xpressbar
+      </div>
+      <div class="tracking-id">
+        No Tracking
+      </div>
+    </div>
+  </template>
+  <!--End Of Order Report DynamiC COntent FIeld-->
+
+  <!-- Start of my -settlment Report TEMPLATE:-->
+  <template id="my-settlement-template" data-page-title="My Settlement">
+    <div id="my-settlement-header" class="content-browser-header">
+      My Settlement
+    </div>
+    <div id="my-settlement-content-header">
+      <div>
+        Amount
+      </div>
+      <div>Status</div>
+      <div>Request Created</div>
+      <div>
+        Request Settled
+      </div>
+    </div>
+    <div id="my-settlement-dynamic-content-holder">
+      <!---CONTENT:-->
+    </div>
+  </template>
+  <!-- End of my-settlement Report Template-->
+
+  <!--my-settlement DynamiC CONTENT: FIeld-->
+  <template id="my-settlement-dynamic-template">
+    <div class="my-setlement-content-holder">
+      <div class="settlement-amount">
+        Rs500
+      </div>
+      <div class="settlement-status">
+        Resolved
+      </div>
+      <div class="settlement-request-created">22/04/2022</div>
+      <div class="settlement-request-settled">26/04/2022</div>
+    </div>
+  </template>
+  <!--end-of-my-settlement DynamiC COntent FIeld-->
+
+  <!-- Start of Welcome TEMPLATE:-->
+  <template id="welcome-template" data-page-title="Welcome">
+    <div id="welcome-header" class="content-browser-header">
+      Welcome
+    </div>
+    <div id="order-Data-container">
+      <div id="sales-Text">
+        Total Sales
+      </div>
+      <div id="sales-numerics">
+        &#x20b9; 1616.0
+      </div>
+      <div style="font-size: 30px">Orders</div>
+      <div class="infoData">
+        <div class="btn-defaults">
+          New Order
+          <div id="newText">1</div>
+        </div>
+        <div class="btn-defaults">
+          Pending Order
+          <div id="pendingText">4</div>
+        </div>
+      </div>
+    </div>
+  </template>
+  <!-- End of Welcome Template -->
+
+  <!--Start of Loading TEMPLATE:-->
+  <template id="loader-template" data-page-title="Loading Data">
+    <div id="loader">
+      <div class="loader-item"> Loading Data</div>
+    </div>
+    </div>
+  </template>
+  <!-- End of Loading Template-->
+
+  <!---END OF tEMPLATES-->
+  <!-- </template> -->
+
+  <!--Initial Page Rendering Starts-->
+  <div id="navbar-fixed">
+    <div class="navbar">
+     
+      <img id="profile-image" height="70%" src="https://i.pravatar.cc/400?img=5" alt="" class="hidden" />
+      <div id="navbar-search-holder" class="hidden">
+        <div id="navbar-search" >
+          <input id="nav-input" placeholder="Search Here" type="text" />
+          <button id="nav-search-btn">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+      </div>
+      <div id="nav-msg-container" class="hidden">
+        <div data-notify="5" class="nav-msg">
+          <i class="fa-solid fa-message"></i>
+        </div>
+      </div>
+  
+      <div class="navbar-logo-text">Mybooklo Publisher Panel</div>
+      <div id="profile-image-expander" class="">
+        <div id="img-exp-btn-container">
+          <button id="my-account-btn-call">My Account</button>
+          <button id="my-earning-btn-call">My Earning</button>
+          <button id="faq-btn-call">FAQ</button>
+          <button id="contact-us-btn-call">Contact Us</button>
+          <button id="logout-btn">LogOut</button>
+        </div>
+      </div>
+      <div id="notify-expander" class="">
+        <div class="sample-msg">
+          <div class="notify-title"></div>
+          <div class="notify-content"></div>
+        </div>
+        <div class="sample-msg">
+          <div class="notify-title"></div>
+          <div class="notify-content"></div>
+        </div>
+        <div class="sample-msg">
+          <div class="notify-title"></div>
+          <div class="notify-content"></div>
+        </div>
+        <div class="sample-msg">
+          <div class="notify-title"></div>
+          <div class="notify-content"></div>
+        </div>
+        <div class="sample-msg">
+          <div class="notify-title"></div>
+          <div class="notify-content"></div>
+        </div>
+        <div class="sample-msg">
+          <div class="notify-title"></div>
+          <div class="notify-content"></div>
+        </div>
+        <div class="sample-msg">
+          <div class="notify-title"></div>
+          <div class="notify-content"></div>
+        </div>
+        <div class="sample-msg">
+          <div class="notify-title"></div>
+          <div class="notify-content"></div>
+        </div>
+        <div class="sample-msg">
+          <div class="notify-title"></div>
+          <div class="notify-content"></div>
+        </div>
+        <div class="sample-msg">
+          <div class="notify-title"></div>
+          <div class="notify-content"></div>
+        </div>
+        <div class="sample-msg">
+          <div class="notify-title"></div>
+          <div class="notify-content"></div>
+        </div>
+        <div class="sample-msg">
+          <div class="notify-title"></div>
+          <div class="notify-content"></div>
+        </div>
+        <div class="sample-msg">
+          <div class="notify-title"></div>
+          <div class="notify-content"></div>
+        </div>
+        <div class="sample-msg">
+          <div class="notify-title"></div>
+          <div class="notify-content"></div>
+        </div>
+        <div class="sample-msg">
+          <div class="notify-title"></div>
+          <div class="notify-content"></div>
+        </div>
+        <div class="sample-msg">
+          <div class="notify-title"></div>
+          <div class="notify-content"></div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <!--  NavBar Done -->
+    <!--SIde Bar-->
+
+    <div id="sidebar_tag" class="sidebar hidden"> <!-- On Login CSS here-->
+      <button id="add-btn">Add Book</button>
+      <button id="my-bok-btn">My Books</button>
+      <button id="my-cus-btn">My Customers</button>
+      <button id="sale-report-btn">Sale Report</button>
+      <button id="my-order-btn">Order Report</button>
+      <button id="my-earning-btn">My Earning</button>
+      <button id="my-settlement-btn">My Settlement</button>
+      <button id="my-shop-btn">My Shop</button>
+      <div id="pin-me">
+        <div id="pin-me-btn">
+          <i class="fa-solid fa-thumbtack"></i>
+        </div>
+      </div>
+    </div>
+    <!-- SIde Bar Done-->
+
+    <!-- ModalContent -->
+    <div id="modal-toggle">
+      <div id="logout-modal">
+        <div id="modal-window">
+          <div id="logout-title">
+            Do you Want to Logout
+          </div>
+          <div id="logout-text">
+            We Hate to See You Leave
+          </div>
+          <div class="logout-btn">
+            <button id="logout-yes" class="waves-effect waves-light teal darken-3 btn btn-large"> YES</button>
+            <button id="logout-no" class="waves-effect waves-light deep-purple darken-2 btn btn-large"> No</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--End of Modal-->
+
+
+    <!--Start of Profile Section-->
+    <div id="body_design" class="hidden _design">
+    </div>
+    <div id="content-browser" class="hidden">  <!-- LOGIN DISABLED CSS HERE-->
+      </div>
+      <!--End of COntent Browser-->
+
+      <!--Start of Login/signup Section-->
+
+      <div id="login_content_browser">
+        <div id="login_design" class="_design">
+        </div>
+        <div id="login_signup_form">
+          <div id="form_left_content">
+
+            <div id="login_page">
+            <div id="form_title">
+              SIGN IN
+            </div>
+            <div id="form_content">
+              <div class="input-field col s10 ">
+                <input id="phone_placeholder" type="number" class="validate">
+                <label for="phone_placeholder" class="deep-purple-text text-darken-3">Phone Number</label>
+              </div>
+              <div class="input-field col s10">
+                <input id="password_placeholder" type="text" class="validate">
+                <label for="password_placeholder" class="deep-purple-text text-darken-3">Password</label>
+              </div>
+              <div class="switch">
+                <label>
+                  <input id="remember_me_checkbox" type="checkbox">
+                  <span class="lever"></span>
+                  Remember Me
+                </label>
+              </div>
+              <a id="login_form_btn" onclick="login_form_btn_script()" class="waves-effect waves-light btn">Login</a>
+            </div>
+          </div>
+
+
+          </div>
+          
+
+            <img  id="form_right_content" src="./assets/images/page_intro.PNG" alt="" srcset="">
+         
+         
+        </div>
+
+        
+
+
+      </div>
+
+      <!-- End of Login/Signup-->
+  
+      <!--END of Initialial Loading Section-->
+</body>
+
+</html>
