@@ -8,7 +8,7 @@
       document.title = document.getElementById("loader-template").getAttribute('data-page-title');
       loadTemplate();
       async function loadTemplate(){
-        let data = await fetch(`https://deelay.me/5000/https://splendid-zephyr-production-94b4.up.railway.app/user`);    //Stimulate Slow Response
+        let data = await fetch(`https://deelay.me/5000/https://splendid-zephyr-production-94b4.up.railway.app/user`);    //Stimulate Slow Response 
         let data_received = await data.json();
         parent.innerHTML = '';
         await parent.append(document.getElementById(template_id).content.cloneNode(true))
