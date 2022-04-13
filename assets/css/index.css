@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  user-select: none;
 }
 
 body{
@@ -656,8 +657,8 @@ margin-bottom: 20px;
   animation-duration: 2s;
   animation-iteration-count: infinite;
 
-}
 
+}
 @keyframes loading {
   0%{
     color: #EEE;
@@ -1088,6 +1089,7 @@ input:checked + .slider:before {
   background-color: rgba(255, 255, 255, 0.676);
   color: black;
   width: fit-content;
+
 }
 .customer-holder:active{
   background-color: #461491;
